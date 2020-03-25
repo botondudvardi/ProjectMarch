@@ -1,58 +1,88 @@
 package hu.botondudvardi.customers;
 
-import java.io.*;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+
+import java.util.Comparator;
 
 public class Customer {
 
-    static Map<String, Double> Name = new HashMap<String, Double>();
-    static Map<String, Double> MotherName = new HashMap<String, Double>();
-    static Map<String, Double> DoB = new HashMap<String, Double>();
-    static Map<String, Double> PoB = new HashMap<String, Double>();
-    static Map<String, Double> AccStart = new HashMap<String, Double>();
-    static Map<String, Double> AccNo = new HashMap<String, Double>();
-    static Map<String, Double> Balance = new HashMap<String, Double>();
-    static Map<String, Double> Deposit = new HashMap<String, Double>();
 
 
-    public static void main(String[] args){
+    private String name;
+    private String motherName;
+    private String dateOfBirth;
+    private String postOfBox;
+    private String accountStart;
+    private String accountNumber;
+    private int balance;
+    private int deposit;
 
-        importData();
+    public Customer(String[] table) {
+
+        name = table[0];
+        motherName = table[1];
+        dateOfBirth = table[2];
+        postOfBox = table[3];
+        accountStart = table[4];
+        accountNumber = table[5];
+        balance = Integer.parseInt(table[6]);
+        deposit = Integer.parseInt(table[7]);
+
     }
 
-    static void importData() {
 
-        File f = new File("C:\\Users\\Botond\\ProjectMarch/ugyfelek.csv");
-        BufferedReader br = null;
-        Scanner scanner;
+    public String getName() {
+        return name;
+    }
+
+    public String getMotherName() {
+        return motherName;
+    }
+
+    public String getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public String getPostOfBox() {
+        return postOfBox;
+    }
+
+    public String getAccountStart() {
+        return accountStart;
+    }
+
+    public String getAccountNumber() {
+        return accountNumber;
+    }
+
+    public int getBalance() {
+        return balance;
+    }
+
+    public int getDeposit() {
+        return deposit;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "name='" + name + '\'' +
+                ", motherName='" + motherName + '\'' +
+                ", dateOfBirth='" + dateOfBirth + '\'' +
+                ", postOfBox='" + postOfBox + '\'' +
+                ", accountStart='" + accountStart + '\'' +
+                ", accountNumber='" + accountNumber + '\'' +
+                ", balance=" + balance +
+                ", deposit=" + deposit +
+                '}';
+    }
+}
+
+class TakeAccStart implements Comparator{
+
+    public int compare(Object o1, Object o2){
 
 
-        try {
-            br = new BufferedReader(new FileReader(f));
-            String currentLine;
+        return
 
-            while ((currentLine = br.readLine()) != null) {
-
-                scanner = new Scanner(currentLine);
-
-                System.out.println(currentLine);
-            }
-
-        } catch (FileNotFoundException fnfe) {
-
-            fnfe.printStackTrace();
-
-        } catch (IOException ioe) {
-
-            ioe.printStackTrace();
-        } finally {
-            try {
-                br.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
     }
 }
