@@ -1,10 +1,20 @@
 package hu.botondudvardi.customers;
 
 import java.io.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
 
 public class Customer {
 
-
+    static Map<String, Double> Name = new HashMap<String, Double>();
+    static Map<String, Double> MotherName = new HashMap<String, Double>();
+    static Map<String, Double> DoB = new HashMap<String, Double>();
+    static Map<String, Double> PoB = new HashMap<String, Double>();
+    static Map<String, Double> AccStart = new HashMap<String, Double>();
+    static Map<String, Double> AccNo = new HashMap<String, Double>();
+    static Map<String, Double> Balance = new HashMap<String, Double>();
+    static Map<String, Double> Deposit = new HashMap<String, Double>();
 
 
     public static void main(String[] args){
@@ -14,17 +24,20 @@ public class Customer {
 
     static void importData() {
 
+        File f = new File("C:\\Users\\Botond\\ProjectMarch/ugyfelek.csv");
         BufferedReader br = null;
+        Scanner scanner;
 
 
         try {
-            br = new BufferedReader(new FileReader(new File("C:\\Users\\Botond\\ProjectMarch/ugyfelek.csv")));
-            String line;
+            br = new BufferedReader(new FileReader(f));
+            String currentLine;
 
+            while ((currentLine = br.readLine()) != null) {
 
-            while ((line = br.readLine()) != null) {
+                scanner = new Scanner(currentLine);
 
-                System.out.println(line);
+                System.out.println(currentLine);
             }
 
         } catch (FileNotFoundException fnfe) {
